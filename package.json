@@ -1,0 +1,24 @@
+{
+  "name": "takenote-app",
+  "version": "1.0.0",
+  "description": "This backend project will build an API for a note app that provides users with the ability to quickly create and manage notes.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YawAsanteBoadu/TakeNote-App-Backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YawAsanteBoadu/TakeNote-App-Backend/issues"
+  },
+  "homepage": "https://github.com/YawAsanteBoadu/TakeNote-App-Backend#readme",
+  "dependencies": {
+    "dotenv": "^17.0.0",
+    "express": "^5.1.0"
+  }
+}
