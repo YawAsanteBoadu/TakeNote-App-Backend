@@ -1,0 +1,70 @@
+Folder Structure 
+MVC(S-R)
+----------
+1st folder: config
+> this folder holds every configuration of the project
+files under config:
+1. env.js:
+> in other to avoid numerous import of the dotenv package, is best to create this file and imort it once and for all.
+> under seperation of concern; it is good to move the package imported and its configuration into this evn.js and the export it for whatever file might need it import it.
+> inside this file, create a javascript object and construct all data as attribute of the ENV object.
+> anytime you need to use the information here, you just have to import it and the destructure what you need from it.
+> eg: Now we need the port number stored inside .env at server.js for the server to run; all that we need to do is to import the env.js in sever.js and the destructure the ENV object to access the port number.  easy pizzy
+> note: ENV is the object, anytime you need some from the object you call it this way (ENV.(i need this))
+
+
+
+    *ended with 01BestPractice Video
+
+
+** ejs can help you build and express application which can render UI
+
+Packages 
+1st package: package.json
+> manage or keep track of all the dependancies which the project might rely on
+> whenever you install a package, you will see it is added to the dependancy object in the package.json
+how to intall: npm install -y (y stand for yes, to skip to the end)
+
+2nd package: express server
+> by installing express the node_module folder will come along but do not add it to your github repo
+> reason: every developer who clones your project can intall it back.
+> backend functionalities sit on server and we use express to create a server for javascript apps
+* setting up the server
+1st file: app.js
+>app.js is not going to start the server but it will be containing the structure or scapfold of how the server is working
+> it contains the logic of how the server works or response to other stuffs
+*commonly it is used to make examplily server configuration in videos and other contents but in real standard project it is not used as such. 
+> best practice: import express here; create an instance of express here(const app = express()) then you export it out to server.js
+2nd file: server.js
+> this will be the file to contain anything about starting the server, starting the database or connecting to the database. 
+
+3rd package: dotenv
+> best practice: it is best to avoid hard coding every piece of data that your application depends on to run. basically some secret information as port number for starting the application, and database configurations...
+*using dotenv keep it safe🔐
+> create a file in the main directory named; ".env"
+> import dotenv in the server.js file
+> then you configure it by (dotenv.config)
+> the configuration logic above is what enables the package to look for the .env file and load it for where it is needed
+> regardless the work of the .config() you still need to access the content inside .env file using a global viariable in nodeJS called "process"
+    *the global variable called process: refers to any nodejs server which running within your machine*
+> note: every content in .env file is an object with a key:value pair
+*how to install: npm install dotenv 
+>
+
+* Package Managers in Javascript
+1. npm: you can find all dependancies you need to build your node.js projects
+2. yarn ✅
+3. pnpm ✅
+
+* npx: node package executor 
+* nvm: node version manager
+
+* two module systems in Javascript
+> common Js
+> ECMA SCRIPT ES6
+by default nodeJS uses common js
+how to change to ECMA script: in the package.json set the value of type to "module"
+
+
+*seperation of concern says, code should be kept in seperate files as they handle a single task. !! don't put your code togther!!*
+
