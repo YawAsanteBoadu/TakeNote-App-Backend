@@ -38,7 +38,7 @@ how to intall: npm install -y (y stand for yes, to skip to the end)
 2nd file: server.js
 > this will be the file to contain anything about starting the server, starting the database or connecting to the database. 
 
-3rd package: dotenv
+3rd Package: dotenv
 > best practice: it is best to avoid hard coding every piece of data that your application depends on to run. basically some secret information as port number for starting the application, and database configurations...
 *using dotenv to keep it safe🔐
 > create a file in the main directory named; ".env"
@@ -49,7 +49,10 @@ how to intall: npm install -y (y stand for yes, to skip to the end)
 *the global variable called process: refers to any nodejs server which running within your machine*
 > note: every content in .env file is an object with a key:value pair
 *how to install: npm install dotenv 
->
+
+4th Package: nodemon♻️
+# by default any changes that we make to the server does not take effect automatically. 
+helps to develop node application; it automatically restart the server when it dictects changes in any file
 
 * Package Managers in Javascript
 1. npm: you can find all dependancies you need to build your node.js projects
@@ -69,13 +72,53 @@ how to change to ECMA script: in the package.json set the value of type to "modu
 *seperation of concern says, code should be kept in seperate files as they handle a single task. !! don't put your code togther!!*
 
 
+                                *2nd Lesson*
+
     *Planning Endpoint*
 1. Create API VERSION
 > /api/v1
 users 
-> any endpoint that anyone wants to hit will have to be prefixed with usres: eg. localhost:4000/users/signup
-
-
-
+=> any endpoint that any user wants to hit will have to be prefixed with usres: eg. localhost:4000/users/signup
 => *building a project you have to think about the project going to scale, you have to think about seperation o f concern as well*
 for instnace if you use localhost:4000/signup as user signup endpoint; what will you do if you get to a point where there is a need for admin special route. Then you have to use the same endpoint up there for all routing which is know as generic route; makes your code to hard to maintian and scale.   
+=> for some reasons like mandatory details for user signup or logins, you have to think of versioning your API. 
+=> what instutions do is that, they give newer versions to new users and slowly they transition from older to newer, otherwise changing it all at once may break things. 
+
+*Brief on Middleware*
+=> Middleware is anything that sits between request and response. 
+Proxy Server is also related to Middleware:
+1. Forward Proxy 
+2. Reverse Proxy
+In Express it is called use()
+
+*Case Study Example*
+1. app.post("/api/v1/user/signup", (req, res) => {
+    res.send("Sign Up Successgul 👏")
+})
+
+2. app.post("/api/v1/user/login", (req, res) => {
+    res.send("Login Successful 👏")
+})
+
+=> from the above code:
+1. we are repeating ourselves in so many ways
+-> "api/v1" has been repeated in both route
+-> "/user" has also been repeated in both route
+2. Looking at the case study, you can notice that anything that has the nature of "users", eg. note, reminder and so on. They hold the need to have thier own routes. This means that as we are repeating users, the same way that we are going to be repeating these things. When it happens so our becomes to much to maintain. In other words, it is bad. 
+*Best Practice*
+-> We can create a constant variable for currunt api and the we assign the current version to it. (const API_Version = "/api/v1")
+-> We can use middleware to help avoid too many repetition of route. 
+# How to achive it;
+1. To put them in seperate files
+    -> any route that is about users will be kept is a sperate file
+    -> any route that is about notes will be kept in a sperate file
+    -> any route that is about reminder will be kept in a seperate file
+2. Put all files above in a seperate folder name *routes* becuause it is keeping files that are holding routes to some features of the software.
+🥇1st File: user.route.js
+This file will contain everything about user endpoint
+-> We will setup all user endpoint here, then we import it at app.js
+
+=> 2nd File: note.route.js
+This file will contain every about note endpoint.
+# Express Router
+-> This is a library of NodeJS that allows you to seperate your route into different files. 

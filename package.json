@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "This backend project will build an API for a note app that provides users with the ability to quickly create and manage notes.",
   "main": "app.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon server.js"
   },
   "repository": {
     "type": "module",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/YawAsanteBoadu/TakeNote-App-Backend#readme",
   "dependencies": {
     "dotenv": "^17.0.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
   }
 }
