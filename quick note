@@ -122,3 +122,10 @@ This file will contain everything about user endpoint
 This file will contain every about note endpoint.
 # Express Router
 -> This is a library of NodeJS that allows you to seperate your route into different files. 
+
+=> 3rd File: index.js for cleaner code
+* Created `index.js` to serve as a central entry point for all application routes.
+* Exported all individual route modules (e.g., user, auth) from `routes/index.js`.
+* Modified `app.js` to import and utilize only the `routes/index.js` module.
+* Streamlines `app.js` and improves route management by centralizing route definitions.
+`in javascript, when a folder is imported, it looks for the defualt file in it. which is why we are able to use index.js how we are using it`
